@@ -4,6 +4,7 @@ import CurrencyStrengthMeterWidget from './heatmaps/CurrencyStrengthMeter';
 import FXCrossRatesWidget from './heatmaps/FXCrossRates';
 import TickerTapeHeatmapWidget from './heatmaps/TickerTapeHeatmap';
 import StockHeatmapWidget from './heatmaps/StockHeatmap';
+import { SingleTickerWidget } from './heatmaps/SingleTicker';
 import RealtimeNewsTickerWidget from './news/RealtimeHeadlineTickerWidget';
 import NewsStoryWidget from './news/NewsStory/index';
 import NewsDashboardWidget from './news/NewsDashboard/index';
@@ -126,6 +127,7 @@ Object.assign(widgetComponents, {
   'fx-cross-rates': FXCrossRatesWidget,
   'ticker-tape': TickerTapeHeatmapWidget,
   'heatmap': StockHeatmapWidget,
+  'single-ticker': SingleTickerWidget,
 
   // News Category - Map working Realtime News Ticker widget
   'realtime-headline-ticker': RealtimeNewsTickerWidget,
@@ -229,6 +231,7 @@ export {
   FXCrossRatesWidget,
   TickerTapeHeatmapWidget,
   StockHeatmapWidget,
+  SingleTickerWidget,
   RealtimeNewsTickerWidget,
   RiskSentimentWidget,
   RiskIndicatorWidget,

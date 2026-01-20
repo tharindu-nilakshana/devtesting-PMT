@@ -27,6 +27,7 @@ export const getWidgetTranslationKey = (widgetId: string): string => {
     'fx-cross-rates': 'Widgets.FXCrossRates',
     'ticker-tape': 'Widgets.TickerTape',
     'heatmap': 'Widgets.Heatmap',
+    'single-ticker': 'Widgets.SingleTicker',
     'interest-rate-probability': 'Widgets.InterestRateProbability',
     'implied-forward-curve': 'Widgets.ImpliedForwardCurve',
     'implied-forward-rates': 'Widgets.ImpliedForwardRates',
@@ -220,6 +221,13 @@ export const availableWidgets: Widget[] = [
     id: 'heatmap',
     name: 'Heatmap',
     description: 'Stock heatmap with options for Stocks, Crypto, and ETFs (formerly Stock Heatmap)',
+    category: 'heatmaps',
+    isImplemented: true
+  },
+  {
+    id: 'single-ticker',
+    name: 'Single Ticker',
+    description: 'Real-time single symbol price display with large format pricing and percentage change',
     category: 'heatmaps',
     isImplemented: true
   },

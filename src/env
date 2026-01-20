@@ -1,0 +1,42 @@
+# Environment Configuration for PMT Platform
+
+# API Configuration (Required for database operations)
+API_BASE_URL=http://localhost:3000/api
+
+# Next.js Public API Configuration (for client-side)
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api
+NEXT_PUBLIC_API_SERVER_ROOT=/api/pmt/
+NEXT_PUBLIC_SERVER_ROOT_CTRL=https://dev64.primemarket-terminal.com/
+
+# External API Endpoints
+NEXT_PUBLIC_API_UPSTREAM=https://dev64.primemarket-terminal.com/api/
+NEXT_PUBLIC_CTRL_UPSTREAM=https://dev64.primemarket-terminal.com/
+
+# WebSocket Configuration
+NEXT_PUBLIC_WS_RTS=wss://dws.primemarket-terminal.com:65345
+NEXT_PUBLIC_WS_TRADINGVIEW=wss://pws.primemarket-terminal.com:8081
+
+# AI API Configuration
+NEXT_PUBLIC_AI_API=https://ai.primemarket-terminal.com/query
+
+# Next.js Configuration
+NODE_ENV=development
+
+# Database Configuration (if using external database)
+DATABASE_URL=
+
+# Authentication Configuration
+JWT_SECRET=your-jwt-secret-key-here
+
+# System Variables Configuration
+SYSTEM_VARIABLES_SECRET=your-system-variables-secret-key-here
+
+# Firebase Configuration (Required for FCM notifications)
+NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyB3fd9iDbVPgTxadUNKnX-xAub46x7mmAY
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=prime-market-terminal.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=prime-market-terminal
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=prime-market-terminal.firebasestorage.app
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=1010154718430
+NEXT_PUBLIC_FIREBASE_APP_ID=1:1010154718430:web:e8c60042abffbe25ffee4f
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-8HBMC3RGLT
+NEXT_PUBLIC_FIREBASE_VAPID_KEY=BJ9RxMinpCijGLN0H-F7bjrHsjU574WBsJyy1tKNCnxMtFL8KcU1mET3BrFen-T9e_d35PEADcnYgNUdjX_h2sc

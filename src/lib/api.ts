@@ -27,6 +27,9 @@ export const API_CONFIG = {
   
   // API Token (centralized)
   API_TOKEN: process.env.NEXT_PUBLIC_API_TOKEN || 'b2fae2b6ad3eeb6707f2b0b67bce24e7-5f9c927fd163f36ee1e4e4986d75b262-847d5cc6a12c8df9abb3985f158d8deb-61466056b5fa4c5699fc00c3cf0cbf08',
+
+  // Bond Yields API Token
+  BOND_YIELDS_TOKEN: process.env.BOND_YIELDS_TOKEN || 'bbeecd4e9e170e8066bba2dc55741f99-35cbcd2e43016920ba6f5ea1558c3c58-ed7ed71f8bda85a8bd933fca416ae03e-9bcc84441260e35d42616caa8b9cb236',
 } as const;
 
 // Helper function to build API URLs
