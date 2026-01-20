@@ -1,0 +1,97 @@
+// Light theme styles for Seasonality Performance Chart Widget using CSS custom properties
+.light .seasonality-performance-chart-widget {
+  // CSS Custom Properties for Light Theme
+  --spc-widget-bg: #ffffff;
+  --spc-text-primary: #333333;
+  --spc-text-secondary: #666666;
+  --spc-text-muted: #666666;
+  --spc-border: #e5e5e5;
+  --spc-border-focus: #007bff;
+  --spc-control-bg: #ffffff;
+  --spc-control-border: #dddddd;
+  --spc-error: #dc2626;
+  --spc-chart-bg: transparent;
+  --spc-grid-color: #e5e5e5;
+  --spc-text-color: #666666;
+  
+  // Chart colors for different year ranges
+  --spc-5y-color: #E68200;
+  --spc-10y-color: #FF0000;
+  --spc-15y-color: #00CCFF;
+
+  // Widget container styles
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  background-color: var(--spc-widget-bg);
+  border: 1px solid var(--spc-border);
+  border-radius: 0;
+  overflow: hidden;
+
+  // Chart container
+  .chart-container {
+    background: var(--spc-chart-bg);
+    overflow: hidden;
+    padding: 16px;
+    position: relative;
+  }
+
+  // Controls section
+  .controls {
+    .symbol-select,
+    .display-mode-select {
+      background: var(--spc-control-bg);
+      border: 1px solid var(--spc-control-border);
+      color: var(--spc-text-primary);
+      
+      &:focus {
+        border-color: var(--spc-border-focus);
+        outline: none;
+      }
+    }
+
+    .checkbox-container {
+      .checkbox-label {
+        color: var(--spc-text-primary);
+        
+        &[for="show5Y"] {
+          color: var(--spc-5y-color);
+        }
+        
+        &[for="show10Y"] {
+          color: var(--spc-10y-color);
+        }
+        
+        &[for="show15Y"] {
+          color: var(--spc-15y-color);
+        }
+      }
+    }
+  }
+
+  // Loading and error states
+  .loading-text {
+    color: var(--spc-text-muted);
+    font-size: 12px;
+  }
+
+  .error-text {
+    color: var(--spc-error);
+    font-size: 12px;
+  }
+
+  // Chart-specific styles
+  .spc-chart {
+    background-color: var(--spc-widget-bg);
+  }
+
+  .spc-loading {
+    color: var(--spc-text-muted);
+    font-size: 12px;
+  }
+
+  .spc-error {
+    color: var(--spc-error);
+    font-size: 12px;
+  }
+}

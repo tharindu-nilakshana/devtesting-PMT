@@ -1,0 +1,36 @@
+// Main SCSS file for Light mode
+// Light mode variables
+$light-bg: #ffffff;
+$light-text: #171717;
+$light-border: #dee2e6;
+
+// Base styles
+html, body {
+  font-family: var(--font-inter), 'Inter', 'SF Pro Display', 'Helvetica', sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Light mode styles
+html {
+  background: $light-bg;
+  color: $light-text;
+}
+
+// Fixed scroll
+html[data-fixed-scroll='true'] {
+  overflow: hidden;
+}
+
+html[data-fixed-scroll='false'] {
+  overflow: auto;
+}
+
+// Widget base styles
+.widget {
+  border: 1px solid $light-border;
+  border-radius: 8px;
+  padding: 16px;
+  background: $light-bg;
+  transition: all 0.3s ease;
+}

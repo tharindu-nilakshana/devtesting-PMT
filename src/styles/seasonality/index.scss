@@ -1,0 +1,31 @@
+// Seasonality Widget Styles - Main Import File
+// This file imports all seasonality widget styles for easy inclusion
+
+// Import all widget styles
+// @import './SeasonalityForecastChartWidget/dark.scss';
+// @import './SeasonalityForecastChartWidget/light.scss';
+// @import './SeasonalityForecastTableWidget/dark.scss';
+// @import './SeasonalityForecastTableWidget/light.scss';
+// @import './SeasonalityForecastWidget/dark.scss';
+// @import './SeasonalityForecastWidget/light.scss';
+// @import './SeasonalityPerformanceTableWidget/dark.scss';
+// @import './SeasonalityPerformanceTableWidget/light.scss';
+
+// Theme-specific imports can be handled conditionally
+// Example usage in main styles:
+// 
+.theme-dark {
+  @import './SeasonalityForecastChartWidget/styles/dark.scss';
+  @import './SeasonalityForecastTableWidget/styles/dark.scss';
+  @import './SeasonalityForecastWidget/styles/dark.scss';
+  @import './SeasonalityPerformanceTableWidget/styles/dark.scss';
+  @import './SeasonalityPerformanceChartWidget/styles/dark.scss';
+}
+
+.theme-light {
+  @import './SeasonalityForecastChartWidget/styles/light.scss';
+  @import './SeasonalityForecastTableWidget/styles/light.scss';
+  @import './SeasonalityForecastWidget/styles/light.scss';
+  @import './SeasonalityPerformanceTableWidget/styles/light.scss';
+  @import './SeasonalityPerformanceChartWidget/styles/light.scss';
+}

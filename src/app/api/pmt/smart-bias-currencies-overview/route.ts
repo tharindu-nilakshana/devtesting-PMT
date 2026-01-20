@@ -1,0 +1,38 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import { API_CONFIG } from '../../../../lib/api';
+
+const UPSTREAM = API_CONFIG.UPSTREAM_API;
+
+export async function GET(request: NextRequest) {
+  try {
+    const cookieStore = await cookies();
+    const authToken = cookieStore.get('pmt_auth_token')?.value;
+
+    if (!authToken) {
+      return NextResponse.json({ success: false, error: 'Authentication required' }, { status: 401 });
+    }
+
+    const upstreamUrl = new URL('getCurrenciesWithOverview', UPSTREAM).toString();
+
+    const upstreamResp = await fetch(upstreamUrl, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },
+      cache: 'no-store',
+    });
+
+    if (!upstreamResp.ok) {
+      const text = await upstreamResp.text().catch(() => '');
+      return NextResponse.json({ success: false, error: `Upstream ${upstreamResp.status}`, details: text }, { status: upstreamResp.status });
+    }
+
+    const data = await upstreamResp.json();
+    return NextResponse.json({ success: true, data, timestamp: Date.now() });
+  } catch (err) {
+    return NextResponse.json({ success: false, error: err instanceof Error ? err.message : 'Unknown error' }, { status: 500 });
+  }
+}
+

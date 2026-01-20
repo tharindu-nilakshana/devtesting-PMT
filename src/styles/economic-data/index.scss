@@ -1,0 +1,17 @@
+// Economic Data Widget Styles - Main Import File
+// This file imports all economic data widget styles for easy inclusion
+
+// Import all widget styles
+@import './EventCalendarWidget/styles/dark.scss';
+@import './EventCalendarWidget/styles/light.scss';
+
+// Theme-specific imports can be handled conditionally
+// Example usage in main styles:
+// 
+// .theme-dark {
+//   @import './EventCalendarWidget/styles/dark.scss';
+// }
+// 
+// .theme-light {
+//   @import './EventCalendarWidget/styles/light.scss';
+// }

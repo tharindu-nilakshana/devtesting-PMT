@@ -1,0 +1,71 @@
+// SeasonalityForecastWidget Dark Mode Styles
+
+.seasonality-forecast-widget {
+  background-color: #0A0A0A;
+  border: 1px solid #333;
+  border-radius: 0;
+  color: #e0e0e0;
+
+  .widget-header {
+    background-color: #2a2a2a;
+    padding: 16px;
+    border-bottom: 1px solid #444;
+    
+    .widget-title {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .widget-subtitle {
+      color: #cccccc;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+  }
+
+  .widget-content {
+    padding: 16px;
+    
+    .forecast-summary {
+      background-color: #2a2a2a;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 16px;
+      
+      .summary-item {
+        color: #e0e0e0;
+        margin-bottom: 8px;
+        
+        .label {
+          color: #cccccc;
+          font-weight: 500;
+        }
+        
+        .value {
+          color: #ffffff;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .widget-footer {
+    background-color: #2a2a2a;
+    padding: 12px 16px;
+    border-top: 1px solid #444;
+    color: #cccccc;
+    font-size: 12px;
+  }
+
+  .loading-spinner {
+    color: #666;
+  }
+
+  .error-message {
+    color: #ff6b6b;
+    background-color: #2a1a1a;
+    border: 1px solid #4a2a2a;
+  }
+}

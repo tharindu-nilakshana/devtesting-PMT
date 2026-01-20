@@ -1,0 +1,707 @@
+@import "tailwindcss";
+
+/* Base styles */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  /* Reduced from default 16px by 2 points */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Ensure Inter font is applied to all text elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+a,
+button,
+input,
+textarea,
+select,
+label {
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Global font size reduction by 2 points */
+h1 {
+  font-size: 1.375rem;
+}
+
+/* was 1.5rem (24px -> 22px) */
+h2 {
+  font-size: 1.25rem;
+}
+
+/* was 1.375rem (22px -> 20px) */
+h3 {
+  font-size: 1.125rem;
+}
+
+/* was 1.25rem (20px -> 18px) */
+h4 {
+  font-size: 1rem;
+}
+
+/* was 1.125rem (18px -> 16px) */
+h5 {
+  font-size: 0.875rem;
+}
+
+/* was 1rem (16px -> 14px) */
+h6 {
+  font-size: 0.75rem;
+}
+
+/* was 0.875rem (14px -> 12px) */
+p {
+  font-size: 0.875rem;
+}
+
+/* was 1rem (16px -> 14px) */
+small {
+  font-size: 0.625rem;
+}
+
+/* was 0.75rem (12px -> 10px) */
+
+/* Force Inter font on the body with higher specificity */
+body[class*="geist"] {
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+/* Force Inter font on all widget elements */
+.widget-container,
+.widget-container * {
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+/* Global font size reduction for all elements - reduce by 2 points */
+* {
+  font-size: calc(1em * 0.875);
+  /* Reduce all font sizes by 12.5% (approximately 2 points) */
+}
+
+/* Reset font sizes for elements that should maintain their relative sizing */
+html,
+body {
+  font-size: 14px !important;
+  /* Base font size */
+}
+
+/* Ensure heading hierarchy is maintained */
+h1 {
+  font-size: 1.375rem !important;
+}
+
+h2 {
+  font-size: 1.25rem !important;
+}
+
+h3 {
+  font-size: 1.125rem !important;
+}
+
+h4 {
+  font-size: 1rem !important;
+}
+
+h5 {
+  font-size: 0.875rem !important;
+}
+
+h6 {
+  font-size: 0.75rem !important;
+}
+
+p {
+  font-size: 0.875rem !important;
+}
+
+small {
+  font-size: 0.625rem !important;
+}
+
+/* Widget header titles should use original h3 size to match Bloomberg mock */
+.bg-widget-header h3 {
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  /* Semi-bold weight to match Bloomberg mock */
+}
+
+.bg-widget-header h3 span {
+  font-size: 0.95rem !important;
+}
+
+/* Tailwind text size class overrides - reduce by 2 points */
+.text-xs {
+  font-size: 10px !important;
+}
+
+.text-sm {
+  font-size: 12px !important;
+}
+
+.text-base {
+  font-size: 14px !important;
+}
+
+.text-lg {
+  font-size: 16px !important;
+}
+
+.text-xl {
+  font-size: 18px !important;
+}
+
+.text-2xl {
+  font-size: 20px !important;
+}
+
+.text-3xl {
+  font-size: 22px !important;
+}
+
+.text-4xl {
+  font-size: 24px !important;
+}
+
+.text-5xl {
+  font-size: 28px !important;
+}
+
+.text-6xl {
+  font-size: 32px !important;
+}
+
+.text-7xl {
+  font-size: 36px !important;
+}
+
+.text-8xl {
+  font-size: 40px !important;
+}
+
+.text-9xl {
+  font-size: 44px !important;
+}
+
+/* Force Inter font on Risk Sentiment widget specifically */
+[class*="risk-sentiment"],
+[class*="RiskSentiment"] {
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+[class*="risk-sentiment"] *,
+[class*="RiskSentiment"] * {
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+/* Risk Sentiment Chart Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Risk Sentiment Chart Styling */
+.risk-sentiment-chart {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.risk-sentiment-gauge {
+  background: transparent;
+  border-radius: 8px;
+}
+
+.risk-sentiment-bars {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Bloomberg Terminal Theme Variables */
+:root {
+  --font-size: 11px;
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+  --card: #141414;
+  --card-foreground: #e5e5e5;
+  --popover: #0F0F0F;
+  --popover-foreground: #e5e5e5;
+  --primary: #f97316;
+  --primary-foreground: #ffffff;
+  --secondary: #1f2937;
+  --secondary-foreground: #e5e5e5;
+  --muted: #262626;
+  --muted-foreground: #8a8a8a;
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --success: #22c55e;
+  --success-foreground: #ffffff;
+  --warning: #eab308;
+  --warning-foreground: #ffffff;
+  --border: #2a2a2a;
+  --input: #0F0F0F;
+  --input-background: #0F0F0F;
+  --switch-background: #3f3f46;
+  --ring: #f97316;
+  --grid-line: transparent;
+  --chart-1: #f97316;
+  --chart-2: #3b82f6;
+  --chart-3: #22c55e;
+  --chart-4: #a855f7;
+  --chart-5: #eab308;
+  --radius: 0.375rem;
+  --sidebar: #0c0c0c;
+  --sidebar-foreground: #e5e5e5;
+  --sidebar-primary: #f97316;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0F0F0F;
+  --sidebar-accent-foreground: #e5e5e5;
+  --sidebar-border: #2a2a2a;
+  --sidebar-ring: #f97316;
+  --widget-header: #0c0c0c;
+  --widget-body: #0A0A0A;
+}
+
+.light {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #f5f5f5;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #f97316;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f0f0f0;
+  --muted-foreground: #6b6b6b;
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --success: #22c55e;
+  --success-foreground: #ffffff;
+  --warning: #eab308;
+  --warning-foreground: #1a1a1a;
+  --border: #e5e5e5;
+  --input: #ffffff;
+  --input-background: #ffffff;
+  --switch-background: #d4d4d8;
+  --ring: #f97316;
+  --grid-line: transparent;
+  --chart-1: #f97316;
+  --chart-2: #3b82f6;
+  --chart-3: #22c55e;
+  --chart-4: #a855f7;
+  --chart-5: #eab308;
+  --radius: 0.375rem;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #f97316;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #f97316;
+  --widget-header: #fafafa;
+  --widget-body: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-widget-header: var(--widget-header);
+  --color-widget-body: var(--widget-body);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Dark mode compatibility */
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* Light mode compatibility */
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
+/* Fixed scroll */
+html[data-fixed-scroll='true'] {
+  overflow: hidden;
+  /* prevents body scrolling */
+}
+
+html[data-fixed-scroll='false'] {
+  overflow: auto;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#tv-attr-logo {
+  display: none;
+}
+
+/* Bloomberg Terminal Custom Styles */
+
+/* Flash animation for economic calendar */
+@keyframes flash {
+
+  0%,
+  33%,
+  66%,
+  100% {
+    background-color: transparent;
+  }
+
+  16%,
+  50%,
+  83% {
+    background-color: rgba(249, 115, 22, 0.2);
+  }
+}
+
+.animate-flash {
+  animation: flash 3s ease-in-out;
+}
+
+/* Slide in from left animation */
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.25s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+/* Login page image collage scroll animations */
+@keyframes scroll-down {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(-50%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Modern Custom Scrollbar with Fade Indicators */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(229, 229, 229, 0.4) rgba(42, 42, 42, 0.1);
+  position: relative;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(20, 20, 20, 0.4);
+  border-radius: 0;
+  border-left: 1px solid rgba(42, 42, 42, 0.6);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, rgba(229, 229, 229, 0.15), rgba(229, 229, 229, 0.25));
+  border-radius: 0;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 0 1px rgba(229, 229, 229, 0.1);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, rgba(229, 229, 229, 0.3), rgba(229, 229, 229, 0.4));
+  box-shadow: inset 0 0 0 1px rgba(229, 229, 229, 0.2);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(to right, rgba(229, 229, 229, 0.4), rgba(229, 229, 229, 0.5));
+}
+
+/* Light mode scrollbar */
+.light .custom-scrollbar {
+  scrollbar-color: rgba(107, 107, 107, 0.4) rgba(229, 229, 229, 0.3);
+}
+
+.light .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(245, 245, 245, 0.5);
+  border-left: 1px solid rgba(229, 229, 229, 0.8);
+}
+
+.light .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, rgba(107, 107, 107, 0.2), rgba(107, 107, 107, 0.3));
+  box-shadow: inset 0 0 0 1px rgba(107, 107, 107, 0.15);
+}
+
+.light .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, rgba(107, 107, 107, 0.35), rgba(107, 107, 107, 0.45));
+  box-shadow: inset 0 0 0 1px rgba(107, 107, 107, 0.25);
+}
+
+.light .custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(to right, rgba(107, 107, 107, 0.5), rgba(107, 107, 107, 0.6));
+}
+
+/* Scroll fade indicators */
+.scroll-fade-container {
+  position: relative;
+}
+
+.scroll-fade-container::before,
+.scroll-fade-container::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 12px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-fade-container::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--widget-body) 0%, transparent 100%);
+}
+
+.scroll-fade-container::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--widget-body) 0%, transparent 100%);
+}
+
+.scroll-fade-container.can-scroll-up::before {
+  opacity: 1;
+}
+
+.scroll-fade-container.can-scroll-down::after {
+  opacity: 1;
+}
+
+/* Flag styling for economic calendar */
+.flag-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 20px;
+  background: rgba(10, 10, 10, 0.9);
+  border: 1px solid rgba(42, 42, 42, 0.8);
+  border-radius: 2px;
+  padding: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.flag-emoji {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Android Emoji', 'EmojiSymbols', sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.light .flag-container {
+  background: rgba(245, 245, 245, 0.9);
+  border: 1px solid rgba(229, 229, 229, 0.8);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Rich Text Editor placeholder - removed duplicate placeholder (using absolute positioned div instead) */
+/* .rich-text-editor[contenteditable][data-placeholder]:empty:before {
+  content: attr(data-placeholder);
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+  position: absolute;
+} */
+
+/* Rich Text Editor - Ensure all formatted text maintains font size */
+.rich-text-editor * {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+.rich-text-editor b,
+.rich-text-editor strong {
+  font-weight: bold;
+  font-size: inherit !important;
+}
+
+.rich-text-editor i,
+.rich-text-editor em {
+  font-style: italic;
+  font-size: inherit !important;
+}
+
+.rich-text-editor u {
+  text-decoration: underline;
+  font-size: inherit !important;
+}
+
+.rich-text-editor span {
+  font-size: inherit !important;
+}
+
+/* Notification bell animations */
+@keyframes bell-wiggle {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(-10deg);
+  }
+
+  20% {
+    transform: rotate(10deg);
+  }
+
+  30% {
+    transform: rotate(-10deg);
+  }
+
+  40% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes bell-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.bell-wiggle {
+  animation: bell-wiggle 0.5s ease-in-out infinite;
+}
+
+.bell-pulse {
+  animation: bell-pulse 1s ease-in-out infinite;
+}
+
+/* Force resize cursor on dividers */
+.resize-divider[data-direction="horizontal"],
+.resize-divider[data-direction="horizontal"] * {
+  cursor: col-resize !important;
+}
+
+.resize-divider[data-direction="vertical"],
+.resize-divider[data-direction="vertical"] * {
+  cursor: row-resize !important;
+}
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Voice wave animation for input field */
+@keyframes voice-wave-input {
+  0%, 100% {
+    height: 4px;
+    opacity: 0.4;
+  }
+  50% {
+    height: 20px;
+    opacity: 1;
+  }
+}

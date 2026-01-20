@@ -1,0 +1,12 @@
+<svg width="20" height="15" viewBox="0 0 20 15" xmlns="http://www.w3.org/2000/svg">
+  <rect width="20" height="15" fill="#B22234"/>
+  <rect width="20" height="1.15" fill="#FFFFFF"/>
+  <rect y="2.3" width="20" height="1.15" fill="#FFFFFF"/>
+  <rect y="4.6" width="20" height="1.15" fill="#FFFFFF"/>
+  <rect y="6.9" width="20" height="1.15" fill="#FFFFFF"/>
+  <rect y="9.2" width="20" height="1.15" fill="#FFFFFF"/>
+  <rect y="11.5" width="20" height="1.15" fill="#FFFFFF"/>
+  <rect y="13.85" width="20" height="1.15" fill="#FFFFFF"/>
+  <rect width="8" height="8.05" fill="#3C3B6E"/>
+  <text x="4" y="5" font-family="Arial" font-size="3" fill="#FFFFFF" text-anchor="middle">US</text>
+</svg>

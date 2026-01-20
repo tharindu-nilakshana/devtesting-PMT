@@ -1,0 +1,350 @@
+// /* SeasonalityPerformanceTableWidget - Light Theme CSS Custom Properties */
+
+// .light .seasonality-performance-table-widget {
+//   --sp-widget-bg: #ffffff;
+//   --sp-text-primary: #333333;
+//   --sp-text-secondary: #6b6b6b;
+//   --sp-border: #dee2e6;
+//   --sp-header-bg: rgba(248, 249, 250, 0.9);
+//   --sp-row-even: #f8f9fa;
+//   --sp-row-odd: #ffffff;
+//   --sp-success: #16a34a;
+//   --sp-destructive: #dc2626;
+//   --sp-neutral: #6b6b6b;
+//   --sp-spinner-border: #999999;
+//   --sp-error-bg: rgba(220, 53, 69, 0.08);
+//   --sp-error-border: rgba(220, 53, 69, 0.35);
+// }
+
+// /* Widget-specific styles using custom properties */
+// .seasonality-performance-table-widget {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100%;
+//   width: 100%;
+//   background-color: var(--sp-widget-bg);
+//   color: var(--sp-text-primary);
+// }
+
+// .seasonality-performance-table-widget .sp-container {
+//   height: 100%;
+//   overflow: auto;
+// }
+
+// .seasonality-performance-table-widget .sp-table {
+//   width: 100%;
+//   border-collapse: collapse;
+//   color: var(--sp-text-primary);
+// }
+
+// .seasonality-performance-table-widget .sp-table thead th {
+//   position: sticky;
+//   top: 0;
+//   background: var(--sp-header-bg);
+//   text-align: center;
+//   padding: 8px;
+//   font-weight: 600;
+//   border: 1px solid var(--sp-border);
+//   color: #8a8a8a;
+// }
+
+// .seasonality-performance-table-widget .sp-table tbody td {
+//   border: 1px solid var(--sp-border);
+//   padding: 8px;
+//   text-align: center;
+// }
+
+// .seasonality-performance-table-widget .sp-table tbody td:first-child {
+//   text-align: left;
+//   font-weight: 600;
+//   color: var(--sp-text-primary);
+// }
+
+// .seasonality-performance-table-widget .sp-table tbody tr:nth-child(even) td {
+//   background-color: var(--sp-row-even) !important;
+// }
+
+// .seasonality-performance-table-widget .sp-table tbody tr:nth-child(odd) td {
+//   background-color: var(--sp-row-odd) !important;
+// }
+
+// .seasonality-performance-table-widget .sp-table tbody tr:first-child td {
+//   background: var(--sp-header-bg) !important;
+//   font-weight: 600;
+//   color: #8a8a8a;
+//   border-top: none !important;
+// }
+
+// .seasonality-performance-table-widget .sp-text-success {
+//   color: var(--sp-success) !important;
+//   font-weight: 600;
+// }
+
+// .seasonality-performance-table-widget .sp-text-destructive {
+//   color: var(--sp-destructive) !important;
+//   font-weight: 600;
+// }
+
+// .seasonality-performance-table-widget .sp-loading-skeleton {
+//   background-color: var(--sp-row-even);
+// }
+
+// .seasonality-performance-table-widget .sp-spinner {
+//   width: 20px;
+//   height: 20px;
+//   border: 2px solid var(--sp-spinner-border);
+//   border-top-color: transparent;
+//   border-radius: 50%;
+//   animation: spin 1s linear infinite;
+// }
+
+// .seasonality-performance-table-widget .sp-error-message {
+//   max-width: 520px;
+//   background: var(--sp-error-bg);
+//   border: 1px solid var(--sp-error-border);
+//   padding: 12px;
+//   border-radius: 4px;
+// }
+
+// .seasonality-performance-table-widget .sp-error-title {
+//   font-weight: 600;
+//   margin-bottom: 6px;
+// }
+
+// .seasonality-performance-table-widget .sp-error-details {
+//   font-size: 12px;
+//   color: var(--sp-destructive);
+// }
+
+// @keyframes spin {
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+
+/* SeasonalityPerformanceTableWidget - Light Theme CSS Custom Properties */
+
+.light .seasonality-performance-table-widget {
+  --sp-widget-bg: #ffffff;
+  --sp-text-primary: #333333;
+  --sp-text-secondary: #6b6b6b;
+  --sp-border: #dee2e6;
+  --sp-header-bg: rgba(248, 249, 250, 0.9);
+  --sp-row-even: #f8f9fa;
+  --sp-row-odd: #ffffff;
+  --sp-success: #16a34a;
+  --sp-destructive: #dc2626;
+  --sp-neutral: #6b6b6b;
+  --sp-spinner-border: #999999;
+  --sp-error-bg: rgba(220, 53, 69, 0.08);
+  --sp-error-border: rgba(220, 53, 69, 0.35);
+  
+  /* Heatmap color variables - matching the provided color logic */
+  /* Negative values (red/pink shades) */
+  --sp-heat-very-strong-negative: #991b1b;  /* absValue >= 3 */
+  --sp-heat-strong-negative: #b91c1c;       /* absValue >= 2 */
+  --sp-heat-medium-negative: #dc2626;       /* absValue >= 1 */
+  --sp-heat-light-negative: #f87171;        /* absValue >= 0.5 */
+  --sp-heat-very-light-negative: #fca5a5;   /* absValue < 0.5 */
+  
+  /* Positive values (green shades) */
+  --sp-heat-very-strong-positive: #047857;  /* absValue >= 3 */
+  --sp-heat-strong-positive: #059669;       /* absValue >= 2 */
+  --sp-heat-medium-positive: #10b981;       /* absValue >= 1 */
+  --sp-heat-light-positive: #34d399;        /* absValue >= 0.5 */
+  --sp-heat-very-light-positive: #6ee7b7;   /* absValue < 0.5 */
+  
+  /* No data */
+  --sp-heat-no-data: #f3f4f6;
+}
+
+/* Widget-specific styles using custom properties */
+.seasonality-performance-table-widget {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--sp-widget-bg);
+  color: var(--sp-text-primary);
+}
+
+.seasonality-performance-table-widget .sp-container {
+  height: 100%;
+  overflow: auto;
+}
+
+.seasonality-performance-table-widget .sp-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--sp-text-primary);
+}
+
+.seasonality-performance-table-widget .sp-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--sp-header-bg);
+  text-align: center;
+  padding: 8px;
+  font-weight: bold;
+  border: 1px solid var(--sp-border);
+  color: var(--sp-text-primary);
+}
+
+.seasonality-performance-table-widget .sp-table tbody td {
+  border: 1px solid var(--sp-border);
+  padding: 8px;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.seasonality-performance-table-widget .sp-table tbody td .sp-arrow-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.seasonality-performance-table-widget .sp-table tbody td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--sp-text-primary);
+  background-color: var(--sp-header-bg) !important;
+}
+
+/* Heatmap color coding - applies to data cells (not first column) */
+.seasonality-performance-table-widget .sp-table tbody td:not(:first-child) {
+  font-weight: 500;
+  
+  /* Negative values - red/pink shades */
+  &.heat-very-strong-negative,
+  &[data-heat="very-strong-negative"] {
+    background-color: var(--sp-heat-very-strong-negative) !important;
+    color: #ffffff !important;
+  }
+  
+  &.heat-strong-negative,
+  &[data-heat="strong-negative"] {
+    background-color: var(--sp-heat-strong-negative) !important;
+    color: #ffffff !important;
+  }
+  
+  &.heat-medium-negative,
+  &[data-heat="medium-negative"] {
+    background-color: var(--sp-heat-medium-negative) !important;
+    color: #ffffff !important;
+  }
+  
+  &.heat-light-negative,
+  &[data-heat="light-negative"] {
+    background-color: var(--sp-heat-light-negative) !important;
+    color: #7f1d1d !important;
+  }
+  
+  &.heat-very-light-negative,
+  &[data-heat="very-light-negative"] {
+    background-color: var(--sp-heat-very-light-negative) !important;
+    color: #7f1d1d !important;
+  }
+  
+  /* Positive values - green shades */
+  &.heat-very-strong-positive,
+  &[data-heat="very-strong-positive"] {
+    background-color: var(--sp-heat-very-strong-positive) !important;
+    color: #ffffff !important;
+  }
+  
+  &.heat-strong-positive,
+  &[data-heat="strong-positive"] {
+    background-color: var(--sp-heat-strong-positive) !important;
+    color: #ffffff !important;
+  }
+  
+  &.heat-medium-positive,
+  &[data-heat="medium-positive"] {
+    background-color: var(--sp-heat-medium-positive) !important;
+    color: #ffffff !important;
+  }
+  
+  &.heat-light-positive,
+  &[data-heat="light-positive"] {
+    background-color: var(--sp-heat-light-positive) !important;
+    color: #064e3b !important;
+  }
+  
+  &.heat-very-light-positive,
+  &[data-heat="very-light-positive"] {
+    background-color: var(--sp-heat-very-light-positive) !important;
+    color: #064e3b !important;
+  }
+  
+  /* No data / N/A */
+  &.heat-no-data,
+  &[data-heat="no-data"] {
+    background-color: var(--sp-heat-no-data) !important;
+    color: var(--sp-text-secondary) !important;
+  }
+}
+
+.seasonality-performance-table-widget .sp-table tbody tr:nth-child(even) td {
+  background-color: var(--sp-row-even) !important;
+}
+
+.seasonality-performance-table-widget .sp-table tbody tr:nth-child(odd) td {
+  background-color: var(--sp-row-odd) !important;
+}
+
+.seasonality-performance-table-widget .sp-table tbody tr:first-child td {
+  background: var(--sp-header-bg) !important;
+  font-weight: 600;
+  color: var(--sp-text-primary) !important;
+  border-top: none !important;
+}
+
+.seasonality-performance-table-widget .sp-text-success {
+  color: var(--sp-success) !important;
+  font-weight: 600;
+}
+
+.seasonality-performance-table-widget .sp-text-destructive {
+  color: var(--sp-destructive) !important;
+  font-weight: 600;
+}
+
+.seasonality-performance-table-widget .sp-loading-skeleton {
+  background-color: var(--sp-row-even);
+}
+
+.seasonality-performance-table-widget .sp-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--sp-spinner-border);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.seasonality-performance-table-widget .sp-error-message {
+  max-width: 520px;
+  background: var(--sp-error-bg);
+  border: 1px solid var(--sp-error-border);
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.seasonality-performance-table-widget .sp-error-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.seasonality-performance-table-widget .sp-error-details {
+  font-size: 12px;
+  color: var(--sp-destructive);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,36 @@
+// Main SCSS file for Dark mode
+// Dark mode variables
+$dark-bg: #0a0a0a;
+$dark-text: #ededed;
+$dark-border: #444649;
+
+// Base styles
+html, body {
+  font-family: var(--font-inter), 'Inter', 'SF Pro Display', 'Helvetica', sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Dark mode styles
+html {
+  background: $dark-bg;
+  color: $dark-text;
+}
+
+// Fixed scroll
+html[data-fixed-scroll='true'] {
+  overflow: hidden;
+}
+
+html[data-fixed-scroll='false'] {
+  overflow: auto;
+}
+
+// Widget base styles
+.widget {
+  border: 1px solid $dark-border;
+  border-radius: 8px;
+  padding: 16px;
+  background: $dark-bg;
+  transition: all 0.3s ease;
+}

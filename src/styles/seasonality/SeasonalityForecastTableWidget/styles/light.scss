@@ -1,0 +1,91 @@
+/* SeasonalityForecastTableWidget - Light Theme CSS Custom Properties */
+
+.light .seasonality-forecast-table-widget {
+  --sf-widget-bg: #ffffff;
+  --sf-text-primary: #1a1a1a;
+  --sf-text-secondary: #6b6b6b;
+  --sf-border: #e5e5e5;
+  --sf-hover-bg: rgba(240, 240, 240, 0.3);
+  --sf-header-bg: #fafafa;
+  --sf-success: #22c55e;
+  --sf-warning: #eab308;
+  --sf-destructive: #ef4444;
+  --sf-neutral: #6b6b6b;
+}
+
+/* Widget-specific styles using custom properties */
+.seasonality-forecast-table-widget {
+  background-color: var(--sf-widget-bg);
+  color: var(--sf-text-primary);
+  border-color: var(--sf-border);
+}
+
+.seasonality-forecast-table-widget .sf-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+
+.seasonality-forecast-table-widget .sf-table td span {
+  font-size: 11px!important;
+}
+
+
+.seasonality-forecast-table-widget .sf-header {
+  background-color: var(--sf-header-bg);
+  color: #8a8a8a;
+  border-bottom: 1px solid var(--sf-border);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.seasonality-forecast-table-widget .sf-row {
+  border-bottom: 1px solid var(--sf-border);
+  transition: background-color 0.2s ease;
+  font-size: 12px;
+}
+
+.seasonality-forecast-table-widget .sf-row:hover {
+  background-color: var(--sf-hover-bg);
+}
+
+.seasonality-forecast-table-widget .sf-text-primary {
+  color: var(--sf-text-primary);
+}
+
+.seasonality-forecast-table-widget .sf-text-secondary {
+  color: var(--sf-text-secondary);
+}
+
+.seasonality-forecast-table-widget .sf-text-success {
+  color: var(--sf-success);
+}
+
+.seasonality-forecast-table-widget .sf-text-warning {
+  color: var(--sf-warning);
+}
+
+.seasonality-forecast-table-widget .sf-text-destructive {
+  color: var(--sf-destructive);
+}
+
+.seasonality-forecast-table-widget .sf-text-neutral {
+  color: var(--sf-neutral);
+}
+
+.seasonality-forecast-table-widget .sf-border {
+  border-color: var(--sf-border);
+}
+
+.seasonality-forecast-table-widget .sf-trend-bullish {
+  border-bottom-color: var(--sf-success);
+}
+
+.seasonality-forecast-table-widget .sf-trend-bearish {
+  border-top-color: var(--sf-destructive);
+}
+
+.seasonality-forecast-table-widget .sf-trend-neutral {
+  background-color: var(--sf-neutral);
+}

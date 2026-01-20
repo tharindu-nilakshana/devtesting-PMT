@@ -1,0 +1,67 @@
+:root,
+html.dark,
+html.theme-dark,
+html[data-theme="dark"] {
+  --tv-color-pane-background: #0a0a0a;
+  --tv-color-pane-background-secondary: rgba(249, 115, 22, 0.2);
+
+  --tv-color-toolbar-button-background-hover: rgba(38, 38, 38, 0.5);
+  --tv-color-toolbar-button-background-secondary-hover: rgba(38, 38, 38, 0.5);
+  --tv-color-toolbar-button-background-expanded: rgba(38, 38, 38, 0.5);
+  
+  --tv-color-toolbar-button-text: #8a8a8a;
+  --tv-color-toolbar-button-text-hover: #e5e5e5;
+  --tv-color-toolbar-button-text-active:  #f97316;
+  --tv-color-toolbar-button-text-active-hover: #e5e5e5;
+
+  --tv-color-item-active-text: #f97316;
+
+  --tv-color-toolbar-toggle-button-background-active: rgba(249, 115, 22, 0.2);
+  --tv-color-toolbar-toggle-button-background-active-hover: rgba(38, 38, 38, 0.5);
+
+}
+
+html.dark .item-2xPVYue0.isActive-2j-GhQs_, 
+html.theme-dark .item-2xPVYue0.isActive-2j-GhQs_, 
+html[data-theme="dark"] .item-2xPVYue0.isActive-2j-GhQs_,
+html.dark .item-2xPVYue0.isActive-2j-GhQs_:active,
+html.theme-dark .item-2xPVYue0.isActive-2j-GhQs_:active,
+html[data-theme="dark"] .item-2xPVYue0.isActive-2j-GhQs_:active {
+  background-color: rgba(249, 115, 22, 0.2) !important;
+  color: #f97316 !important;
+}
+
+/* Additional selectors for toolbar buttons */
+.item-2xPVYue0.isActive-2j-GhQs_ {
+  background-color: rgba(249, 115, 22, 0.2) !important;
+  color: #f97316 !important;
+}
+
+.item-2xPVYue0.isActive-2j-GhQs_:active {
+  background-color: rgba(249, 115, 22, 0.2) !important;
+  color: #f97316 !important;
+}
+
+html.dark .item-2xPVYue0.isActive-2j-GhQs_:hover,
+html.theme-dark .item-2xPVYue0.isActive-2j-GhQs_:hover,
+html[data-theme="dark"] .item-2xPVYue0.isActive-2j-GhQs_:hover {
+  background-color: rgba(38, 38, 38, 0.5);
+  color: #e5e5e5;
+}
+
+html.dark .container-RYiwcUsM,
+html.theme-dark .container-RYiwcUsM,
+html[data-theme="dark"] .container-RYiwcUsM {
+  background: rgba(249, 115, 22, 0.2);
+  display: none;
+}
+
+.text-2Q2WewIi {
+  color: #000212;
+  display: none;
+}
+
+.closeButton-2425ZrEc {
+  color: #000212;
+  display: none;
+}

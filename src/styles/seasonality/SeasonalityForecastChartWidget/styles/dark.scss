@@ -1,0 +1,45 @@
+// SeasonalityForecastChartWidget Dark Mode Styles
+
+.seasonality-forecast-chart-widget {
+  background-color: #0A0A0A;
+  border: 1px solid #333;
+  border-radius: 0;
+  color: #e0e0e0;
+
+  .chart-container {
+    background-color: #2a2a2a;
+    border-radius: 6px;
+    padding: 16px;
+  }
+
+  .chart-title {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .chart-legend {
+    color: #cccccc;
+    
+    .legend-item {
+      color: #b0b0b0;
+    }
+  }
+
+  .chart-tooltip {
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+    color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .loading-spinner {
+    color: #666;
+  }
+
+  .error-message {
+    color: #ff6b6b;
+    background-color: #2a1a1a;
+    border: 1px solid #4a2a2a;
+  }
+}

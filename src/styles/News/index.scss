@@ -1,0 +1,17 @@
+// News Widget Styles - Main Import File
+// This file imports all news widget styles for easy inclusion
+
+// Import all widget styles
+@import './RealtimeNewsTickerWidget/styles/dark.scss';
+@import './RealtimeNewsTickerWidget/styles/light.scss';
+
+// Theme-specific imports can be handled conditionally
+// Example usage in main styles:
+// 
+// .theme-dark {
+//   @import './RealtimeNewsTickerWidget/styles/dark.scss';
+// }
+// 
+// .theme-light {
+//   @import './RealtimeNewsTickerWidget/styles/light.scss';
+// }

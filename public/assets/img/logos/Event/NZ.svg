@@ -1,0 +1,8 @@
+<svg width="20" height="15" viewBox="0 0 20 15" xmlns="http://www.w3.org/2000/svg">
+  <rect width="20" height="15" fill="#000080"/>
+  <rect width="20" height="5" fill="#FFFFFF"/>
+  <rect y="10" width="20" height="5" fill="#FFFFFF"/>
+  <rect width="5" height="15" fill="#FFFFFF"/>
+  <rect y="5" width="5" height="5" fill="#000080"/>
+  <text x="12" y="8" font-family="Arial" font-size="2" fill="#000080" text-anchor="middle">NZ</text>
+</svg>
