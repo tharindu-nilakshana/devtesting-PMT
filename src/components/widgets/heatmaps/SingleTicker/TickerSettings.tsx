@@ -108,7 +108,7 @@ export function TickerSettings({
           {/* Module/Asset Class */}
           <div>
             <label className="text-xs text-muted-foreground mb-2 block font-bold">
-              Asset Class asdsadasdad
+              Asset Class
             </label>
             <div className="relative">
               <button

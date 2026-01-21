@@ -88,6 +88,7 @@ import InstitutionalShareholdersWidget from './stock-analysis/InstitutionalShare
 import PositionBookWidget from './orderflow/PositionBook';
 import OrderbookWidget from './orderflow/Orderbook';
 import FootprintChartsWidget from './orderflow/FootprintCharts';
+import BondChartWidget from './fixed-income/BondChart';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const widgetComponents: Record<string, React.ComponentType<any>> = {};
@@ -212,6 +213,9 @@ Object.assign(widgetComponents, {
   'orderbook': OrderbookWidget,
   'footprint-charts': FootprintChartsWidget,
 
+  // Fixed Income Category
+  'bond-chart': BondChartWidget,
+
   // Utilities Category
   'world-clock': WorldClockWidget,
   'ticklist': TicklistWidget,
@@ -299,4 +303,6 @@ export {
   PositionBookWidget,
   OrderbookWidget,
   FootprintChartsWidget,
+  // Fixed Income exports
+  BondChartWidget,
 };

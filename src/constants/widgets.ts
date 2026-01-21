@@ -71,6 +71,7 @@ export const getWidgetTranslationKey = (widgetId: string): string => {
     'quarter-movement': 'Widgets.QuarterMovement',
     'position-book': 'Widgets.PositionBook',
     'orderbook': 'Widgets.Orderbook',
+    'bond-chart': 'Widgets.BondChart',
   };
 
   return translationMap[widgetId] || `Widgets.${widgetId.replace(/-/g, '')}`;
@@ -94,6 +95,7 @@ export const getCategoryTranslationKey = (category: string): string => {
     'scanner': 'Categories.Scanner',
     'market-structure': 'Categories.MarketStructure',
     'orderflow': 'Categories.OrderFlow',
+    'fixed-income': 'Categories.FixedIncome',
     'Others': 'Categories.Others'
   };
 
@@ -718,6 +720,14 @@ export const availableWidgets: Widget[] = [
     name: 'Orderbook',
     description: 'Live order book displaying current buy and sell orders with price levels and volumes',
     category: 'orderflow',
+    isImplemented: true
+  },
+  // Fixed Income Category
+  {
+    id: 'bond-chart',
+    name: 'Bond Chart',
+    description: 'Visualize bond yields and prices across different countries and maturities with customizable time ranges',
+    category: 'fixed-income',
     isImplemented: true
   }
 ];

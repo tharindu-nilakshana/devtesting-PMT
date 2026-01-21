@@ -202,7 +202,9 @@ class TradingViewWebSocket implements WebSocketManager {
         this.setConnectionStatus('error');
         this.isConnecting = false;
         this.connectingPromise = null;
-        reject(new Error('WebSocket connection failed'));
+        // Resolve instead of reject to prevent unhandled promise rejections
+        // The error state is communicated via setConnectionStatus('error')
+        resolve();
       };
 
       } catch (error) {
