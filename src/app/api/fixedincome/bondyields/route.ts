@@ -8,11 +8,6 @@ const getAuthHeaders = () => {
   const token = API_CONFIG.BOND_YIELDS_TOKEN;
   return [
     { name: 'Authorization', value: `Bearer ${token}` },
-    { name: 'Authorization', value: token },
-    { name: 'token', value: token },
-    { name: 'Token', value: token },
-    { name: 'x-api-key', value: token },
-    { name: 'X-API-Key', value: token },
   ];
 };
 

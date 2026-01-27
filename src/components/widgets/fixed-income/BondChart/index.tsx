@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { WidgetHeader } from '@/components/bloomberg-ui/WidgetHeader';
-import { useBondData } from '@/hooks/useBondData';
+import { useBondData } from './useBondData';
+import { useTemplates } from '@/hooks/useTemplates';
 import { TimeRangePreset, getSymbolById, getDefaultSymbol } from '@/types/bond';
 import { Header } from './Header';
 import { Footer } from './Footer';
@@ -72,6 +73,9 @@ export function BondChartWidget({
   const [selectedSymbol, setSelectedSymbol] = useState(initialSettings.symbol);
   const [selectedDisplay, setSelectedDisplay] = useState(initialSettings.displayMode);
 
+  // Get template context for database updates
+  const { activeTemplateId, updateWidgetFields } = useTemplates();
+
   const { data, status, error, refetch, stats, lastUpdated } = useBondData({
     symbol: selectedSymbol,
     timeRange,
@@ -89,11 +93,77 @@ export function BondChartWidget({
     };
   }, [selectedSymbol, selectedDisplay]);
 
+  // Save settings to database using updateWidgetFieldsWeb API
+  const saveSettingsToDatabase = useCallback(async (symbol: string, timeRangeValue: string, displayMode: string) => {
+    // Get widget ID from settings or wgid
+    let widgetIdForApi: string | null = null;
+
+    if (settings?.customDashboardWidgetID) {
+      widgetIdForApi = String(settings.customDashboardWidgetID);
+      console.log('📊 [BondChart] Using customDashboardWidgetID from settings:', widgetIdForApi);
+    } else if (wgid) {
+      // Check if wgid is composite key (contains hyphens) - skip if so
+      if (wgid.includes('-')) {
+        console.log('📊 [BondChart] wgid is composite key:', wgid, '- skipping direct API call');
+      } else {
+        const numericWgid = parseInt(wgid, 10);
+        if (!isNaN(numericWgid)) {
+          widgetIdForApi = wgid;
+          console.log('📊 [BondChart] Using wgid:', widgetIdForApi);
+        }
+      }
+    }
+
+    // Skip if no valid widget ID or no active template
+    if (!widgetIdForApi || !activeTemplateId) {
+      console.log('📊 [BondChart] Cannot save settings - no valid widget ID or missing activeTemplateId', {
+        wgid,
+        widgetIdForApi,
+        activeTemplateId,
+        hasCustomDashboardWidgetID: !!settings?.customDashboardWidgetID
+      });
+      return;
+    }
+
+    try {
+      const additionalSettingsObj = {
+        symbol: symbol,
+        timeRange: timeRangeValue,
+        displayMode: displayMode
+      };
+
+      const updateFields = {
+        module: 'fixed-income',
+        symbols: symbol,
+        additionalSettings: JSON.stringify(additionalSettingsObj),
+      };
+
+      console.log('📡 [BondChart] Calling updateWidgetFields API:', {
+        widgetId: widgetIdForApi,
+        templateId: activeTemplateId,
+        updateFields
+      });
+
+      const result = await updateWidgetFields(widgetIdForApi, activeTemplateId, updateFields);
+
+      if (result.success) {
+        console.log('✅ [BondChart] Settings saved to database');
+      } else {
+        console.warn('⚠️ [BondChart] Failed to save settings:', result.message);
+      }
+    } catch (error) {
+      console.error('❌ [BondChart] Error saving settings to database:', error);
+    }
+  }, [wgid, settings?.customDashboardWidgetID, activeTemplateId, updateWidgetFields]);
+
   // Save settings when they change
   const handleSymbolChange = (symbol: string) => {
     setSelectedSymbol(symbol);
     if (onSaveSettings) {
       onSaveSettings({ symbol, timeRange, displayMode: selectedDisplay });
+      console.log('📊 [BondChart] Using onSaveSettings callback');
+    } else {
+      saveSettingsToDatabase(symbol, timeRange, selectedDisplay);
     }
   };
 
@@ -101,6 +171,9 @@ export function BondChartWidget({
     setSelectedDisplay(display);
     if (onSaveSettings) {
       onSaveSettings({ symbol: selectedSymbol, timeRange, displayMode: display });
+      console.log('📊 [BondChart] Using onSaveSettings callback');
+    } else {
+      saveSettingsToDatabase(selectedSymbol, timeRange, display);
     }
   };
 
@@ -108,6 +181,9 @@ export function BondChartWidget({
     setTimeRange(range);
     if (onSaveSettings) {
       onSaveSettings({ symbol: selectedSymbol, timeRange: range, displayMode: selectedDisplay });
+      console.log('📊 [BondChart] Using onSaveSettings callback');
+    } else {
+      saveSettingsToDatabase(selectedSymbol, range, selectedDisplay);
     }
   };
 

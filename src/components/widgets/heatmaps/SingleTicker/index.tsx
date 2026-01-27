@@ -15,6 +15,7 @@ import { PriceDisplay } from './PriceDisplay';
 import { RightSideLayout } from './RightSideLayout';
 import { TickerSettings } from './TickerSettings';
 import { useTickerData } from './useTickerData';
+import { useTemplates } from '@/hooks/useTemplates';
 import {
   LayoutType,
   SingleTickerSettings,
@@ -75,6 +76,9 @@ export function SingleTickerWidget({
   const [selectedModule, setSelectedModule] = useState(widgetSettings.module);
   const [selectedLayout, setSelectedLayout] = useState<LayoutType>(widgetSettings.layout);
 
+  // Get template context for database updates
+  const { activeTemplateId, updateWidgetFields } = useTemplates();
+
   // Track external settings changes
   const lastPropsSymbolRef = useRef(widgetSettings.symbol);
 
@@ -109,14 +113,84 @@ export function SingleTickerWidget({
     }
   }, [onSaveSettings, selectedPair, selectedModule, selectedLayout]);
 
+  // Save settings to database using updateWidgetFieldsWeb API
+  const saveSettingsToDatabase = useCallback(async (symbol: string, module: string, layout: LayoutType) => {
+    // Get widget ID from settings or wgid
+    let widgetIdForApi: string | null = null;
+
+    if (settings?.customDashboardWidgetID) {
+      widgetIdForApi = String(settings.customDashboardWidgetID);
+      console.log('📊 [SingleTicker] Using customDashboardWidgetID from settings:', widgetIdForApi);
+    } else if (wgid) {
+      // Check if wgid is composite key (contains hyphens) - skip if so
+      if (wgid.includes('-')) {
+        console.log('📊 [SingleTicker] wgid is composite key:', wgid, '- skipping direct API call');
+      } else {
+        const numericWgid = parseInt(wgid, 10);
+        if (!isNaN(numericWgid)) {
+          widgetIdForApi = wgid;
+          console.log('📊 [SingleTicker] Using wgid:', widgetIdForApi);
+        }
+      }
+    }
+
+    // Skip if no valid widget ID or no active template
+    if (!widgetIdForApi || !activeTemplateId) {
+      console.log('📊 [SingleTicker] Cannot save settings - no valid widget ID or missing activeTemplateId', {
+        wgid,
+        widgetIdForApi,
+        activeTemplateId,
+        hasCustomDashboardWidgetID: !!settings?.customDashboardWidgetID
+      });
+      return;
+    }
+
+    try {
+      const additionalSettingsObj = {
+        symbol: symbol,
+        module: module,
+        layout: layout
+      };
+
+      const updateFields = {
+        module: module,
+        symbols: symbol,
+        additionalSettings: JSON.stringify(additionalSettingsObj),
+      };
+
+      console.log('📡 [SingleTicker] Calling updateWidgetFields API:', {
+        widgetId: widgetIdForApi,
+        templateId: activeTemplateId,
+        updateFields
+      });
+
+      const result = await updateWidgetFields(widgetIdForApi, activeTemplateId, updateFields);
+
+      if (result.success) {
+        console.log('✅ [SingleTicker] Settings saved to database');
+      } else {
+        console.warn('⚠️ [SingleTicker] Failed to save settings:', result.message);
+      }
+    } catch (error) {
+      console.error('❌ [SingleTicker] Error saving settings to database:', error);
+    }
+  }, [wgid, settings?.customDashboardWidgetID, activeTemplateId, updateWidgetFields]);
+
   // Handle symbol change
   const handlePairChange = useCallback((pair: string, module?: string) => {
     setSelectedPair(pair);
+    const newModule = module || selectedModule;
     if (module) {
       setSelectedModule(module);
     }
-    saveSettings({ symbol: pair, module: module || selectedModule });
-  }, [saveSettings, selectedModule]);
+    saveSettings({ symbol: pair, module: newModule });
+    // Save to database - use onSaveSettings callback if provided, otherwise use direct API
+    if (onSaveSettings) {
+      console.log('📊 [SingleTicker] Using onSaveSettings callback');
+    } else {
+      saveSettingsToDatabase(pair, newModule, selectedLayout);
+    }
+  }, [saveSettings, selectedModule, selectedLayout, onSaveSettings, saveSettingsToDatabase]);
 
   // Handle module change
   const handleModuleChange = useCallback((module: string) => {
@@ -127,7 +201,13 @@ export function SingleTickerWidget({
   const handleLayoutChange = useCallback((layout: LayoutType) => {
     setSelectedLayout(layout);
     saveSettings({ layout });
-  }, [saveSettings]);
+    // Save to database - use onSaveSettings callback if provided, otherwise use direct API
+    if (onSaveSettings) {
+      console.log('📊 [SingleTicker] Using onSaveSettings callback');
+    } else {
+      saveSettingsToDatabase(selectedPair, selectedModule, layout);
+    }
+  }, [saveSettings, selectedPair, selectedModule, onSaveSettings, saveSettingsToDatabase]);
 
   // Render loading skeleton for below layout
   const renderLoadingSkeleton = () => (
